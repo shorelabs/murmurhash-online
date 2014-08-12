@@ -6,7 +6,12 @@
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css" media="screen">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="javascripts/murmurhash2_gc.js"></script>
+    <script src="javascripts/murmurHash3.js"></script>
+    <script src="javascripts/main.js"></script>
 
     <title>Murmurhash-online by shorelabs</title>
   </head>
@@ -15,22 +20,59 @@
 
     <header>
       <div class="container">
-        <h1>Murmurhash-online</h1>
-        <h2>An online version of MurmurHash - http://en.wikipedia.org/wiki/MurmurHash</h2>
-
-        <section id="downloads">
-          <a href="https://github.com/shorelabs/murmurhash-online/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/shorelabs/murmurhash-online/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/shorelabs/murmurhash-online" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+        <h1>Murmurhash-online <a href="https://github.com/shorelabs/murmurhash-online" class="btn btn-github"><span class="icon"></span>View on GitHub</a></h1>
+        <h2>An online implementation of MurmurHash - <a href="http://en.wikipedia.org/wiki/MurmurHash">http://en.wikipedia.org/wiki/MurmurHash</a></h2>
       </div>
     </header>
 
     <div class="container">
-      <section id="main_content">
-        <h3>
-<a name="an-online-implementation-of-murmurhash" class="anchor" href="#an-online-implementation-of-murmurhash"><span class="octicon octicon-link"></span></a>An online implementation of MurmurHash</h3>
+      <section>
+        <form id="murmurhash2-form" data-method="murmurhash2_32_gc">
+          <h3><a name="murmurhash2" class="anchor" href="#murmurhash2"><span class="octicon octicon-link"></span></a>MurmurHash2 (32 bit)</h3>
+          <textarea class="str" data-attr="str" placeholder="An ASCII text" rows="5"></textarea>
+          <!--<a href="#" class="btn submit">Go</a>-->
+          <input class="result" data-result="value" readonly="1" disabled="1" placeholder="Result - 32-bit positive integer hash"/>
+          <input class="percent" data-result="percent" readonly="1" disabled="1" placeholder="%" title="position within range (result / uint32_max)"/>
+          <input type="text" class="seed" data-attr="seed" placeholder="Optional seed - positive integer (uint32)"/>
+        </form>
       </section>
+
+      <hr/>
+
+      <section>
+        <form id="murmurhash3-form" data-method="murmurHash3">
+          <h3><a name="murmurhash2" class="anchor" href="#murmurhash2"><span class="octicon octicon-link"></span></a>MurmurHash3 (32/128 bit, x86/x64)</h3>
+          <textarea class="str" data-attr="str" placeholder="An ASCII text" rows="5"></textarea>
+          <!--<a href="#" class="btn submit">Go</a>-->
+          <input class="result" data-result="value" readonly="1" disabled="1" placeholder="Result - positive integer/hex hash"/>
+          <input class="percent" data-result="percent" readonly="1" disabled="1" placeholder="%" title="position within range (result / RESULT_MAX)"/>
+          <input type="text" class="seed small" data-attr="seed" placeholder="Optional seed"/>
+          <select name="meth2" class="meth">
+            <option value="hash32">32 bit</option>
+            <option value="hash128">128 bit</option>
+          </select>
+          <select name="meth1" class="meth">
+            <option value="x86">x86</option>
+            <option value="x64">x64</option>
+          </select>
+        </form>
+      </section>
+
+      <hr/>
+
+      <section>
+        <form id="nginx-split-clients-form" data-method="murmurhash2_32_gc">
+          <h3><a name="murmurhash2" class="anchor" href="#murmurhash2"><span class="octicon octicon-link"></span></a>NGINX http_split_clients_module</h3>
+          <!--<p><small>Please note that this is experimental code.</small></p>-->
+          <textarea class="config" data-attr="config" placeholder='NGINX split_clients_module configuration like:
+                                                    0.5%               .one;
+                                                    2.0%               .two;
+                                                    *                  "";' rows="5"></textarea>
+          <textarea class="str" data-attr="str" placeholder="Values you want to test, one per line. Please make sure you enter them exactly as seen by NGINX without any leading or trailing spaces." rows="8"></textarea>
+          <textarea class="result" data-result="value" readonly="1" disabled="1" placeholder="" rows="8"></textarea>
+        </form>
+      </section>
+
     </div>
 
     
