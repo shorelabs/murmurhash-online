@@ -30,7 +30,7 @@ function bindForm($form){
       // Calculate the percent and fall back to 128bit version if necessary
       percent = (Math.round((result / 4294967295) * 10000) / 100);
       if( isNaN(percent) ){
-        percent = Math.round((parseInt(result,16) / parseInt('ffffffffffffffffffffffffffffffff',16)) * 10000) / 100
+        percent = Math.round((parseInt(result,16) / parseInt('ffffffffffffffffffffffffffffffff',16)) * 10000) / 100;
       }
       $percent.val(percent + '%');
     } else {

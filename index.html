@@ -13,7 +13,7 @@
     <script src="javascripts/murmurHash3.js"></script>
     <script src="javascripts/main.js"></script>
 
-    <title>An online version of Murmurhash by ShoreLabs</title>
+    <title>MurmurHash Online - An online version of MurmurHash by ShoreLabs</title>
     <meta name="description" content="An online version of Murmurhash and NGINX http_split_clients_module behaviour testing utility." />
     <link rel="canonical" href="http://murmurhash.shorelabs.com/"/>
 
@@ -24,7 +24,7 @@
 
     <header>
       <div class="container">
-        <h1>Murmurhash-online <a href="https://github.com/shorelabs/murmurhash-online" class="btn btn-github"><span class="icon"></span>View on GitHub</a></h1>
+        <h1>MurmurHash online <a href="https://github.com/shorelabs/murmurhash-online" class="btn btn-github"><span class="icon"></span>View on GitHub</a></h1>
         <h2>An online implementation of MurmurHash - <a href="http://en.wikipedia.org/wiki/MurmurHash">http://en.wikipedia.org/wiki/MurmurHash</a></h2>
       </div>
     </header>
@@ -65,18 +65,12 @@
 
       <section>
         <form id="nginx-split-clients-form" data-method="murmurhash2_32_gc">
-          <h3><a name="murmurhash2" class="anchor" href="#murmurhash2"><span class="octicon octicon-link"></span></a>NGINX http_split_clients_module</h3>
-          <!--<p><small>Please note that this is experimental code.</small></p>-->
-          <textarea class="config" data-attr="config" placeholder='NGINX split_clients_module configuration like:                              0.5%               .one;
-                                                    2.0%               .two;
-                                                    *                  "";' rows="5"></textarea>
+          <h3><a name="murmurhash2" class="anchor" href="#murmurhash2"><span class="octicon octicon-link"></span></a>NGINX http_split_clients_module testing</h3>
+          <textarea class="config" data-attr="config" placeholder='NGINX split_clients_module configuration like:                             0.5%               .one;                                                   2.0%               .two;                                                   *                  "";' rows="5"></textarea>
           <textarea class="str" data-attr="str" placeholder="Values you want to test, one per line. Please make sure you enter them exactly as seen by NGINX without any leading or trailing spaces." rows="8"></textarea>
           <textarea class="result" data-result="value" readonly="1" disabled="1" placeholder="" rows="8"></textarea>
         </form>
       </section>
-
     </div>
-
-    
   </body>
 </html>
